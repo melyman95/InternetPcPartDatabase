@@ -7,14 +7,14 @@ namespace InternetPcPartDatabase.Models
         [Key]
         public int PartId {  get; set; }
 
-        public string PartType {  get; set; }
+        public string? PartType {  get; set; }
 
-        public string PartName {  get; set; }   
+        public string? PartName {  get; set; }   
 
-        public string Manufacturer {  get; set; }
+        public string? Manufacturer {  get; set; }
 
-        public string MSRP {  get; set; }
+        public string? MSRP {  get; set; }
 
-        public string ReleaseYear {  get; set; }
+        public string? ReleaseYear {  get; set; }
     }
 }
