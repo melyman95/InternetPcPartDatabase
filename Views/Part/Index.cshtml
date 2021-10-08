@@ -1,4 +1,27 @@
 ﻿@model IEnumerable<InternetPcPartDatabase.Models.Part>
+@using Microsoft.EntityFrameworkCore
+@inject IHttpContextAccessor SessionData
+@inject InternetPcPartDatabase.Data.PartContext db
+
+@{ 
+    int? userID = SessionData.HttpContext.Session.GetInt32("UserId");
+    string username = null;
+    if (userID.HasValue)
+    {
+        string sessionUserName = SessionData.HttpContext.Session.GetString("Email");
+        if (sessionUserName == null)
+        {
+            username = await (from u in db.UserAccounts
+                              where u.UserAccountId == userID
+                              select u.Email).SingleOrDefaultAsync();
+            SessionData.HttpContext.Session.SetString("UserId", username);
+        }
+        else
+        {
+            username = sessionUserName;
+        }
+    }
+}
 
 @{
     ViewData["Title"] = "Part Collection";
@@ -6,9 +29,6 @@
 
 <h1>Part Collection</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -49,9 +69,14 @@
                 @Html.DisplayFor(modelItem => item.ReleaseYear)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PartId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PartId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PartId">Delete</a>
+                    @if (userID != null) {
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.PartId">Edit</a>
+                    }
+                <a class ="btn btn-secondary" asp-action="Details" asp-route-id="@item.PartId">Details</a>
+                    @if (userID != null)
+                    {
+                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.PartId">Delete</a>
+                    }
             </td>
         </tr>
 }

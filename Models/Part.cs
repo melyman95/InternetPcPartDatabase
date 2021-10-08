@@ -13,6 +13,7 @@ namespace InternetPcPartDatabase.Models
 
         public string? Manufacturer {  get; set; }
 
+        [DataType(DataType.Currency)]
         public string? MSRP {  get; set; }
 
         public string? ReleaseYear {  get; set; }
