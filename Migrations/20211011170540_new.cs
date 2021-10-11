@@ -9,6 +9,13 @@ namespace InternetPcPartDatabase.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "Username",
+                table: "UserAccounts",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -246,6 +253,10 @@ namespace InternetPcPartDatabase.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropColumn(
+                name: "Username",
+                table: "UserAccounts");
         }
     }
 }

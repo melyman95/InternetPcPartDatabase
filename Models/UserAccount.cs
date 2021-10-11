@@ -9,6 +9,9 @@ namespace InternetPcPartDatabase.Models
         public int UserAccountId {  get; set; }
 
         [Required]
+        public string? Username { get; set; }
+        
+        [Required]
         public string? Email {  get; set; }
 
         [Required]

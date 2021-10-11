@@ -104,6 +104,10 @@ namespace InternetPcPartDatabase.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserAccountId");
 
                     b.ToTable("UserAccounts");
