@@ -2,27 +2,6 @@
 @inject IHttpContextAccessor SessionData
 @inject InternetPcPartDatabase.Data.PartContext db
 
-@{ 
-    int? userID = SessionData.HttpContext.Session.GetInt32("UserId");
-    string username = null;
-    if (userID.HasValue)
-    {
-        string sessionUserName = SessionData.HttpContext.Session.GetString("Email");
-        if (sessionUserName == null)
-        {
-            username = await (from u in db.UserAccounts
-                              where u.UserAccountId == userID
-                              select u.Email).SingleOrDefaultAsync();
-                              //was working before, not sure what's wrong
-            //SessionData.HttpContext.Session.SetString("UserId", username);
-        }
-        else
-        {
-            username = sessionUserName;
-        }
-    }
-}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,26 +21,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        @if (userID == null)
-                        {
-                            <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="UserAccount" asp-action="Register">Create Account</a>
-                        </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="UserAccount" asp-action="Login">Have an account? Login</a>
-                            </li>
-                        }
-                        else
-                        {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark disabled">Welcome @username!</a>
-                        </li>
-                        }
-                    </ul>
+                    
                     <partial name="_LoginPartial" />
                 </div>
             </div>
