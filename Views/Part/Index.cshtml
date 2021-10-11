@@ -2,13 +2,16 @@
 @using Microsoft.EntityFrameworkCore
 @inject IHttpContextAccessor SessionData
 @inject InternetPcPartDatabase.Data.PartContext db
+@{
+    #nullable disable
+}
 
 @{ 
     int? userID = SessionData.HttpContext.Session.GetInt32("UserId");
     string username = null;
     if (userID.HasValue)
     {
-        string sessionUserName = SessionData.HttpContext.Session.GetString("Email");
+        string sessionUserName = SessionData.HttpContext.Session.GetString("Username");
         if (sessionUserName == null)
         {
             username = await (from u in db.UserAccounts

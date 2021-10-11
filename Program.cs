@@ -26,6 +26,13 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<PartContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireUppercase = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequiredLength = 6;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
