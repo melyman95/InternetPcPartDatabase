@@ -71,6 +71,17 @@ namespace InternetPcPartDatabase.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+                Part p =
+                    await (from part in _context.Parts
+                           where part.PartId == id
+                           select part).SingleAsync();
+  
+            return View(p);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             // get part with corresponding id
