@@ -23,6 +23,7 @@ builder.Services.AddSession(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<PartContext>();
 builder.Services.AddControllersWithViews();
 
