@@ -100,6 +100,7 @@ namespace InternetPcPartDatabase.Controllers
             {
                _context.Entry(part).State = EntityState.Deleted;
                 await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             return View(part);
         }
