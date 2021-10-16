@@ -8,7 +8,7 @@ namespace InternetPcPartDatabase.Models
         public const string Administrator = "Administrator";
         public const string User = "User";
 
-        public static async Task CreateRoles(IServiceProvider provider, string[] roles)
+        public static async Task CreateRoles(IServiceProvider provider, params string[] roles)
         {
             RoleManager<IdentityRole> roleManager = provider.GetService<RoleManager<IdentityRole>>();
 
