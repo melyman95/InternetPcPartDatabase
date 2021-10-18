@@ -2,26 +2,6 @@
 @inject IHttpContextAccessor SessionData
 @inject InternetPcPartDatabase.Data.PartContext db
 
-@{ 
-    int? userID = SessionData.HttpContext.Session.GetInt32("UserId");
-    string username = null;
-    if (userID.HasValue)
-    {
-        string sessionUserName = SessionData.HttpContext.Session.GetString("Email");
-        if (sessionUserName == null)
-        {
-            username = await (from u in db.UserAccounts
-                              where u.UserAccountId == userID
-                              select u.Email).SingleOrDefaultAsync();
-            SessionData.HttpContext.Session.SetString("UserId", username);
-        }
-        else
-        {
-            username = sessionUserName;
-        }
-    }
-}
-
 @{
     ViewData["Title"] = "Home Page";
 }
