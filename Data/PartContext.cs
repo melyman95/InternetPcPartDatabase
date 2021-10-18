@@ -1,7 +1,5 @@
 ﻿using InternetPcPartDatabase.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-// using Fluent.Infrastructure.FluentModel;
 
 namespace InternetPcPartDatabase.Data
 {
