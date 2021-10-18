@@ -1,6 +1,7 @@
 ﻿using InternetPcPartDatabase.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Fluent.Infrastructure.FluentModel;
 
 namespace InternetPcPartDatabase.Data
 {
@@ -14,11 +15,9 @@ namespace InternetPcPartDatabase.Data
 
         public Microsoft.EntityFrameworkCore.DbSet<Part>? Parts {  get; set; }
 
-        public Microsoft.EntityFrameworkCore.DbSet<UserAccount>? UserAccounts {  get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<RegisterViewModel> RegisterViewModel { get; set; }
 
-        public DbSet<InternetPcPartDatabase.Models.RegisterViewModel> RegisterViewModel { get; set; }
-
-        public DbSet<InternetPcPartDatabase.Models.LoginViewModel> LoginViewModel { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<LoginViewModel> LoginViewModel { get; set; }
 
         // public DbSet
     }

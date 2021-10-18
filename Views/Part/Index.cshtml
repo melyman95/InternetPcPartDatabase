@@ -30,25 +30,14 @@
     ViewData["Title"] = "Part Collection";
 }
 
+<div class="text-center">
 <h1>Part Collection</h1>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PartType)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.PartName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Manufacturer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MSRP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReleaseYear)
             </th>
             <th></th>
         </tr>
@@ -57,19 +46,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.PartType)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.PartName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Manufacturer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MSRP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseYear)
             </td>
             <td>
                 <a class="btn btn-primary" asp-action="Edit" asp-controller="Part" asp-route-id="@item.PartId">Edit</a>
@@ -79,5 +56,6 @@
             </td>
         </tr>
 }
+</div>
     </tbody>
 </table>

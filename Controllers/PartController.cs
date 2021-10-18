@@ -2,6 +2,9 @@
 using InternetPcPartDatabase.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace InternetPcPartDatabase.Controllers
 {
@@ -71,6 +74,17 @@ namespace InternetPcPartDatabase.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+                Part p =
+                    await (from part in _context.Parts
+                           where part.PartId == id
+                           select part).SingleAsync();
+  
+            return View(p);
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
             // get part with corresponding id
@@ -89,6 +103,7 @@ namespace InternetPcPartDatabase.Controllers
             {
                _context.Entry(part).State = EntityState.Deleted;
                 await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             return View(part);
         }

@@ -1,6 +1,9 @@
 using InternetPcPartDatabase.Data;
+using InternetPcPartDatabase.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
+#nullable disable
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +26,7 @@ builder.Services.AddSession(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<PartContext>();
 builder.Services.AddControllersWithViews();
 
@@ -61,5 +65,10 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+// Create the default roles
+IServiceScope serviceProvider = app.Services.GetRequiredService<IServiceProvider>().CreateScope();
+await IdentityHelper.CreateRoles(serviceProvider.ServiceProvider, IdentityHelper.Administrator, IdentityHelper.User);
+// Now create the default admin
 
 app.Run();

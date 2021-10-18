@@ -11,12 +11,16 @@ a {
   color: #0077cc;
 }
 
+.border-top, .border-bottom{
+    color: black;
+}
+
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-  padding-top:inherit;
-  padding-bottom:inherit;
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+    padding-top: inherit;
+    padding-bottom: inherit;
 }
 
 img {
