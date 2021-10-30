@@ -7,6 +7,17 @@ a.navbar-brand {
   word-break: break-all;
 }
 
+div{
+    float:left;
+    margin-right:5px;
+    text-align:center;
+}
+
+div > img {
+        height: 200px;
+        width: 200px;
+    }
+
 a {
   color: #0077cc;
 }

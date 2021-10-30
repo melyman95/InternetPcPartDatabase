@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using Microsoft.SqlServer.Management.Smo;
 
 namespace InternetPcPartDatabase.Controllers
 {
@@ -106,6 +107,149 @@ namespace InternetPcPartDatabase.Controllers
                 return RedirectToAction("Index");
             }
             return View(part);
+        }
+
+        [HttpGet]
+       public async Task<IActionResult> CPUs(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "CPU"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Coolers(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Cooler"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Motherboards(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Motherboard"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> RAM(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "RAM"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> StorageDevices(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Storage"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Graphics(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Graphics"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Cases(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Case"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> PSUs(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "PSU"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Monitors(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Monitor"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Network(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Network Adapter"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Headphones(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Headphones"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Keyboards(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Keyboard"
+                       select part).ToListAsync();
+
+            return View(parts);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Mice(Part part)
+        {
+            List<Part> parts =
+                await (from p in _context.Parts
+                       where part.PartType == "Mouse"
+                       select part).ToListAsync();
+
+            return View(parts);
         }
     }
 }
