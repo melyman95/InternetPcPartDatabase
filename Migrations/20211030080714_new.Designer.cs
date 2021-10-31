@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InternetPcPartDatabase.Migrations
 {
     [DbContext(typeof(PartContext))]
-    [Migration("20211018205042_current")]
-    partial class current
+    [Migration("20211030080714_new")]
+    partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
