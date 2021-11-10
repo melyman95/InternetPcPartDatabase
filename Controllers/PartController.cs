@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.SqlServer.Management.Smo;
+using Microsoft.AspNetCore.Authorization;
 
 namespace InternetPcPartDatabase.Controllers
 {
@@ -27,6 +28,7 @@ namespace InternetPcPartDatabase.Controllers
         }
 
         // Add to database
+        [Authorize(Roles = IdentityHelper.Administrator)]
         [HttpGet]
         public IActionResult Add()
         {
@@ -48,6 +50,7 @@ namespace InternetPcPartDatabase.Controllers
             return View(part);
         }
 
+        [Authorize(Roles = IdentityHelper.Administrator)]
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -85,6 +88,7 @@ namespace InternetPcPartDatabase.Controllers
             return View(p);
         }
 
+        [Authorize(Roles = IdentityHelper.Administrator)]
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
