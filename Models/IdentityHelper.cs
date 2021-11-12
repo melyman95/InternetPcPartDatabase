@@ -15,7 +15,7 @@ namespace InternetPcPartDatabase.Models
             foreach(string role in roles)
             {
                 bool doesRoleExist = await roleManager.RoleExistsAsync(role);
-                if (doesRoleExist)
+                if (!doesRoleExist)
                 {
                     await roleManager.CreateAsync(new IdentityRole(role));
                 }
