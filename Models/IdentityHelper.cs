@@ -35,7 +35,8 @@ namespace InternetPcPartDatabase.Models
                     Email = "admin@admin.com",
                     UserName = "Admin"
                 };
-                await userManager.CreateAsync(defaultUser, "Iamanadmin");
+                // make sure password is strong
+                await userManager.CreateAsync(defaultUser, "IAman-Admin@1");
 
                 await userManager.AddToRoleAsync(defaultUser, role);
             }
