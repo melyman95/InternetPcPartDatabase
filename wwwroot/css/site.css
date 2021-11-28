@@ -101,3 +101,8 @@ body {
   white-space: nowrap;
   line-height: 60px;
 }
+
+dt{
+    margin-left: 5px;
+    text-align:center;
+}
