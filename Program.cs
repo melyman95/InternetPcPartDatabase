@@ -27,19 +27,7 @@ builder.Services.AddSession(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// SendGrid
-var apiKey = builder.Configuration.GetSection("SENDGRID_KEY").Value;
-var client = new SendGridClient(apiKey);
-var message = new SendGridMessage()
-{
-    From = new EmailAddress("gojem73112@terasd.com", "IPCDB"),
-    Subject = "Sending Email with SendGrid",
-    PlainTextContent = "It's easy to do",
-    HtmlContent = "<strong> and easy to do anywhere</strong>"
-};
-message.AddTo(new EmailAddress("mattlyman12@gmail.com", "Matt Lyman"));
-var response = await client.SendEmailAsync(message).ConfigureAwait(false);
-//
+builder.Services.AddTransient<IEmailProvider, EmailProvider_SendGrid>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddRoles<IdentityRole>()
